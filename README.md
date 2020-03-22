@@ -39,8 +39,22 @@
     * D - 의존 역전 원칙(DIP, Dependency Inversion Principle): 의존 관계를 맺을 때 변화하기 쉬운 것 또는 자주 변화하는 것보다는 변화하기 어려운 것, 거의 변화가 없는 것에 의존하라는 것이다.
     * https://irerin07.tistory.com/4
     
-- 단일 책임 원칙 vs 의존 역전 원칙
-    * 
+- 단일 책임 원칙과 의존 역전 원칙
+    *  
+    
+    
 ### 스프링
+- 스프링 프레임 워크란
+    * IoC와 AOP를 지원하는 경량 컨테이너 프레임워크 
+    - POJO 기반의 Enterprise Application 개발을 쉽고 편하게 할 수 있도록 한다.
+- IoC란?
+    * Inversion of Control(제어의 역전) - 객체 생성을 개발자가 하는것이 아닌 컨테이너가 대신 처리해준다.
+- AOP란?
+    * Aspect Oriented Programming - 관점 지향 프로그래밍
+- Dependency Injection
+    * 의존성 주입 - IoC의 형태 중 하나. 클래스 사이에 필요로 하는 의존관계를 컨테이너가 자동으로 처리해주는 것
+    
+- 스프링 vs 스프링 MVC vs 스프링 부트
+    * 
 ### 데이터베이스
 ### 기타
