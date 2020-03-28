@@ -43,6 +43,25 @@
     *  
     
 - 자바는 Call By Value인가 Call By Reference인가
+    - 자바는 기본적으로 Call By Value이다.
+    - Call By Reference인 경우 아래의 코드의 결과가 반대로 나올것이다.
+    - http://mussebio.blogspot.com/2012/05/java-call-by-valuereference.html 
+    - https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value/12429953#12429953
+    
+- 오버로딩과 오버라이딩의 차이(Overloading vs Overriding)
+- String, StringBuilder, StringBuffer
+    - String
+        - immutable, 불변. 한 번 String Pool 이라는 공간에 생성되면 그 인스턴스의 메모리 공간은 변경될 수 없다.
+            - private final char[]의 형태를 가진다.
+                - private: 외부에서 접근 불가
+                - final: 초기값 변경 불가
+        - "+" 혹은 .concat()을 사용하면 새로운 String 인스턴스를 만들고 그 안에 연결 된 문자열을 저장후 참조하게 한다.
+        - 문자열을 합치면 기존에 생성되었던 인스턴스는 GC의 대상이 된다. 
+            - 각각의 String 주소값이 Stack에 쌓이고, GC가 호출되기 전까지 생성된 String 객체들은 Heap에 쌓이기 때문에 메모리 관리에 치명적이다.
+    - StringBuilder
+        - mutable, 가변
+    - StringBuffer
+        - mutable, 가변
     
 ### 스프링
 - 스프링 프레임 워크란
