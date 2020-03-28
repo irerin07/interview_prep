@@ -44,7 +44,6 @@
     
 - 자바는 Call By Value인가 Call By Reference인가
     - 자바는 기본적으로 Call By Value이다.
-    - Call By Reference인 경우 아래의 코드의 결과가 반대로 나올것이다.
     - http://mussebio.blogspot.com/2012/05/java-call-by-valuereference.html 
     - https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value/12429953#12429953
     
