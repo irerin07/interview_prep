@@ -80,5 +80,96 @@
     * 스프링 부트는 Spring 개발을 보다 빠르고 광범위하게 접근 가능하게 만드는 스프링 프레임 워크의 확장도구 같은 것.
         * 스프링 부트의 핵심은 pom.xml(Maven) 혹은 build.gradle(Gradle) 파일 내용에 따라 클래스 패스, 어노테이션, 기타 자바구성클래스를 보고 자동구성하는것
         * 스프링을 쉽게 사용할 수 있도록 필요한 설정을 대부분 미리 세팅 해놓았다는 뜻
+        
+- What Spring Boot property is used to set the logging level for the entire application in the application.properties file?
+    - logging.level.root
+- What dependencies does spring-boot-starter-test NOT bring to the classpath?
+    - Spring MVC
+    - https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test/2.2.6.RELEASE
+- 생성자 주입과 Setter 주입의 차이점
+    - http://javainsimpleway.com/setter-dependency-injectionsdi-vs-constructor-dependency-injectioncdi/
+    - Partial Dependency 
+        * 생성자 주입 방식으로는 Partial Dependency를 구현할 수 없다.
+            - 생성자 주입 방식으로는 생성자에 있는 모든 arguments들을 넘겨주어야 하기 때문.
+            - 하지만 Setter 방식은 필요한 혹은 원하는 의존성들만 주입하는것이 가능하다.
+```java
+//아래와 같은 코드가 있다고 가정해보자
+public class Person {
+    private int id;
+    private String name;
+    private String[] hobbies;
+}
+
+public Person(int id, String name, String[] hobbies) {
+        this.id = id;
+        this.name = name;
+        this.hobbies = hobbies;
+}
+```
+```java
+//생성자 주입을 사용한다면 다음과 같이 주입을 해야 한다.
+<bean id="person" class="com.kb.di.Person">
+    <constructor-arg value="1" type="int"/>
+    <constructor-arg value="Raj"/>
+    <constructor-arg>
+    <array>
+    <value>Playing cricket</value>
+    <value>Coding</value>
+    <value>Reading books</value>
+    </array>
+</constructor-arg>
+</bean>
+```    
+```java
+//만약 아래와 같이 하나라도 빠진다면(지금 같은 경우는 name이 빠진 상태) 에러가 발생한다.
+<bean id="person" class="com.kb.di.Person">
+    <constructor-arg value="1" type="int"/>
+    <constructor-arg>
+    <array>
+    <value>Playing cricket</value>
+    <value>Coding</value>
+    <value>Reading books</value>
+    </array>
+</constructor-arg>
+</bean>
+```
+
+```java
+//하지만 setter메소드를 사용한다면
+public void setId(int id) {
+        this.id = id;
+    }
+ 
+    public void setName(String name) {
+        this.name = name;
+    }
+ 
+    public void setHobbies(String[] hobbies) {
+        this.hobbies = hobbies;
+    }
+```
+```java
+//이와 같이 부분적으로 주입이 가능하다.
+<bean id="person" class="com.kb.di.Person">
+        <property name="id" value="1"></property>
+        <property name="name" value="Raj"></property>
+       
+</bean>
+```
+```java
+//물론 생성자 주입과 마찬가지고 전체를 주입할 수도 있다.
+<bean id="person" class="com.kb.di.Person">
+        <property name="id" value="1"></property>
+        <property name="name" value="Raj"></property>
+        <property name="hobbies">
+            <array>
+                <value>Playing cricket</value>
+                <value>Coding</value>
+                <value>Reading books</value>
+            </array>
+ 
+        </property>
+</bean>
+```
 ### 데이터베이스
 ### 기타
