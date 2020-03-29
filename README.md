@@ -88,6 +88,7 @@
     - https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test/2.2.6.RELEASE
 - 생성자 주입과 Setter 주입의 차이점
     - http://javainsimpleway.com/setter-dependency-injectionsdi-vs-constructor-dependency-injectioncdi/
+    - 생성자 주입과 Setter 주입을 모두 사용하면 스프링 컨테이너는 setter 주입을 우선적으로 사용한다.
     - Partial Dependency 
         * 생성자 주입 방식으로는 Partial Dependency를 구현할 수 없다.
             - 생성자 주입 방식으로는 생성자에 있는 모든 arguments들을 넘겨주어야 하기 때문.
