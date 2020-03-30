@@ -100,7 +100,7 @@
         * 생성자 주입 방식으로는 Partial Dependency를 구현할 수 없다.
             - 생성자 주입 방식으로는 생성자에 있는 모든 arguments들을 넘겨주어야 하기 때문.
             - 하지만 Setter 방식은 필요한 혹은 원하는 의존성들만 주입하는것이 가능하다.
-```java
+```
 //아래와 같은 코드가 있다고 가정해보자
 public class Person {
     private int id;
@@ -114,7 +114,7 @@ public Person(int id, String name, String[] hobbies) {
         this.hobbies = hobbies;
 }
 ```
-```java
+```
 //생성자 주입을 사용한다면 다음과 같이 주입을 해야 한다.
 <bean id="person" class="com.kb.di.Person">
     <constructor-arg value="1" type="int"/>
@@ -128,7 +128,7 @@ public Person(int id, String name, String[] hobbies) {
 </constructor-arg>
 </bean>
 ```    
-```java
+```
 //만약 아래와 같이 하나라도 빠진다면(지금 같은 경우는 name이 빠진 상태) 에러가 발생한다.
 <bean id="person" class="com.kb.di.Person">
     <constructor-arg value="1" type="int"/>
@@ -142,7 +142,7 @@ public Person(int id, String name, String[] hobbies) {
 </bean>
 ```
 
-```java
+```
 //하지만 setter메소드를 사용한다면
 public void setId(int id) {
         this.id = id;
@@ -156,7 +156,7 @@ public void setId(int id) {
         this.hobbies = hobbies;
     }
 ```
-```java
+```
 //이와 같이 부분적으로 주입이 가능하다.
 <bean id="person" class="com.kb.di.Person">
         <property name="id" value="1"></property>
@@ -164,7 +164,7 @@ public void setId(int id) {
        
 </bean>
 ```
-```java
+```
 //물론 생성자 주입과 마찬가지고 전체를 주입할 수도 있다.
 <bean id="person" class="com.kb.di.Person">
         <property name="id" value="1"></property>
