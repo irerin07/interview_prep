@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,7 +63,7 @@
       <workItem from="1585379649502" duration="711000" />
       <workItem from="1585462325665" duration="1513000" />
       <workItem from="1585476543228" duration="6504000" />
-      <workItem from="1585540781557" duration="2301000" />
+      <workItem from="1585540781557" duration="2363000" />
     </task>
     <servers />
   </component>
@@ -74,10 +71,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="652" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1585540784105">
+    <state x="652" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1585665621247">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="652" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585540784105" />
+    <state x="652" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585665621247" />
   </component>
   <component name="masterDetails">
     <states>
