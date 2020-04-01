@@ -68,7 +68,41 @@
        - 문자열 연산 등으로 기존 객체에 공간이 부족하게 되는 경우, 기존의 버퍼 크기를 늘리며 유연하게 동작
        - StringBuffer와 StringBuilder 클래스가 제공하는 메서드는 서로 동일
        - StringBuffer는 각 메서드별로 Synchronized Keyword가 존재하여, 멀티스레드 환경에서도 동기화를 지원
+
+- Java Reflection
+    - Java에는 Class라는 이름의 클래스가 존재한다.
+    - Class는 런타임에 존재하는 모든 클래스와 객체들의 정보를 가지고 있다.
+    - Class의 객체는 특정 클래스의 프로퍼티(생성자, 필드, 메소드)를 가지고 있으며 이 객체들을 이용하여 reflection을 실행하게 된다.
+    - Reflection은 구체적인 클래스 타입을 알지 못해도 그 클래스의 내부 정보에 접근, 조회, 수정할 수 있는 기법을 말한다. 
+        - 구체적인 클래스 타입을 알지 못하면 해당 클래스의 메소드, 타입, 변수들에 접근할 수가 없다.
+    ```java
+    public class ReflectionExample{
+      public static void main(String[] args){
+          Object robot = new Robot();
+          robot.move(); // 컴파일 에러 발생
+      }
+    }
+    class Robot{
+      public void move(){
+          //doSomeThing
+      }
+    }
+    ```
+    - 모든 클래스의 조상 클래스인 Object 타입으로 Robot클래스의 인스턴스를 만들었지만 사용할 수 있는 메소드는 Object의 메소드뿐이다.
+        - 이런식으로 객체의 구체적인 Class를 모든다면 해당 Class의 메소드와 변수는 사용할 수 없다.
+        - 형변환을 사용하면 해당 클래스의 메소드와 변수에 접근할 수 있다. 
+        - eg) Robot newRobot = (Robot)robot;  
+        newRobot.move();
+    - [리플렉션(getMethod())을 사용해 public 메소드 불러오기](http://www.avajava.com/tutorials/lessons/how-do-i-call-a-method-using-reflection.html)
+    - [리플렉션(getDeclaredMethod())을 사용해 private/protected 메소드 불러오기](http://www.avajava.com/tutorials/lessons/how-do-i-call-a-declared-method-using-reflection.html)
+    - [리플렉션(getField()/ set())을 사용해 필드 불러오고 설정하기](http://www.avajava.com/tutorials/lessons/how-do-i-get-and-set-a-field-using-reflection.html)
+    - [리플렉션(getDeclaredField()/ set())을 사용해 필드 불러오고 설정하기](http://www.avajava.com/tutorials/lessons/how-do-i-get-and-set-a-declared-field-using-reflection.html)
+    - [리플렉션(getDeclaredConstructor()/getConstructor())을 사용해 생성자로 객체 생성하기](http://www.avajava.com/tutorials/lessons/how-do-i-create-an-object-via-its-multiparameter-constructor-using-reflection.html)
     
+
+
+
+
 ### 스프링
 - 스프링 프레임 워크란
     * IoC와 AOP를 지원하는 경량 컨테이너 프레임워크 
