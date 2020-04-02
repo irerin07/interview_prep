@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DesignPattern/DesignPattern_interview.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/gof_types.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Database_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Database_interview.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DesignPattern/DesignPattern_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/DesignPattern/DesignPattern_interview.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +72,8 @@
       <workItem from="1585665615857" duration="138000" />
       <workItem from="1585716877831" duration="5860000" />
       <workItem from="1585749189372" duration="4617000" />
-      <workItem from="1585820412677" duration="3225000" />
+      <workItem from="1585820412677" duration="4146000" />
+      <workItem from="1585844632106" duration="759000" />
     </task>
     <servers />
   </component>
@@ -78,10 +81,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="652" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1585820441373">
+    <state x="652" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1585844640387">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="652" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585820441373" />
+    <state x="652" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585844640387" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1585721773482">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

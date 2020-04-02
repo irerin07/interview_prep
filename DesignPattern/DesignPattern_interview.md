@@ -1,5 +1,7 @@
 ### 디자인 패턴
+![joins](../images/gof_types.png)
 #### Singleton 패턴
+- Creational Pattern, 생성 패턴
 - 인스턴스가 하나뿐인 특별한 객체를 만들 수 있게 해주는 디자인 패턴
 - 생성자가 private으로 지정되어있다.
 - 즉 인스턴스를 직접 만드는것이 아니라 인스턴스를 "달라고 요청"하는 것
@@ -14,7 +16,10 @@
     2. Double Checking Locking (DCL)을 사용해 동기화되는 부분을 줄인다.
         - DCL을 사용하면 일단 인스턴스가 생성되어 있는지 확인한 다음, 생성되어 있지 않은 경우에만 동기화를 할 수 있다.
         - 다만 DCL은 자바 1.5버전 부터 사용할 수 있다.
-        
+- 스프링은 기본적으로 별다른 설정을 하지 않으면 내부에서 생성하는 빈 오브젝트를 모두 싱글톤으로 만든다.
+    - 엄밀히 말하자면 스프링은 직접 싱글톤 형태의 오브젝트를 만들고 관리하는 기능을 제공한다. -> 싱글톤 레지스트리
+    - [출처](http://blog.naver.com/PostView.nhn?blogId=kjy6268&logNo=50107958407)
+
 ```java
 public class singleton {
     private volatile static Singleton uniqueInstance; 
