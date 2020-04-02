@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Database/Database_interview.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/Java_interview.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spring/Spring_interview.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DesignPattern/DesignPattern_interview.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +70,7 @@
       <workItem from="1585665615857" duration="138000" />
       <workItem from="1585716877831" duration="5860000" />
       <workItem from="1585749189372" duration="4617000" />
-      <workItem from="1585820412677" duration="589000" />
+      <workItem from="1585820412677" duration="3225000" />
     </task>
     <servers />
   </component>
