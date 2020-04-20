@@ -85,6 +85,8 @@ class Robot{
     - 형변환을 사용하면 해당 클래스의 메소드와 변수에 접근할 수 있다. 
     - eg) Robot newRobot = (Robot)robot;  
     newRobot.move();
+    
+    
 - [리플렉션(getMethod())을 사용해 public 메소드 불러오기](http://www.avajava.com/tutorials/lessons/how-do-i-call-a-method-using-reflection.html)
 - [리플렉션(getDeclaredMethod())을 사용해 private/protected 메소드 불러오기](http://www.avajava.com/tutorials/lessons/how-do-i-call-a-declared-method-using-reflection.html)
 - [리플렉션(getField()/ set())을 사용해 필드 불러오고 설정하기](http://www.avajava.com/tutorials/lessons/how-do-i-get-and-set-a-field-using-reflection.html)
