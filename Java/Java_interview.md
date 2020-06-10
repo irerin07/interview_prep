@@ -97,11 +97,24 @@ class Robot{
 - 가비지/ Garbage?
     - 실행중인 프로그램의 어떤 포인터로도 접근할 수 없는 객체를 Garbage로 간주합니다.
     - [An object is considered garbage when it can no longer be reached from any pointer in the running program.](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html) 
-- 가장 단순한 GC알고리즘은 접근이 가능한 모든 객체를 Garbage인지 확인하는 방법이다.
-    - 이 방법은 규모가 큰 프로그램에서 심각한 문제가 생길 수 있다.
+- 가장 단순한 GC알고리즘은 접근이 가능한 모든 객체를 순회한 뒤에 남아있는 객체를 Garbage로 판단하는 방식이다.
+    - 이 방법은 살아있는 객체의 수에 비례하는 시간이 소요되므로 규모가 큰 프로그램에서 심각한 문제가 생길 수 있다.
 - 대부분의 객체는 생성되자마자 garbage가 되어버리고 이를 'weak generational hypothesis'라고 한다.
-
-
+    - 그렇기 때문에 매번 전체 객체를 확인하는 방법이 아닌 generational한 구조를 고안해냈다.
+    - [To optimize for this scenario, memory is managed in generations (memory pools holding objects of different ages).](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html)
+- ![generational](../images/jsgct_dt_001_armgnt_gn.png)
+- ![memory model](../images/jvm_momory_model.png)
+- 대부분의 객체는 young generation 풀에 할당되고 그곳에서 죽는다.
+- young generation이 가득 차게 되면 minor collection이 발생하게 되며 young generation에 해당하는 객체만 GC의 대상이 된다.
+- minor collection은 '약한 세대 가설'(weak generational hypothesis)을 전제로 최적화된 것입니다. 
+- 컬렉션의 비용은 수집되는 살아있는 객체의 수에 비례하므로, 죽은 객체들로만 가득찬 young generation은 매우 빠르게 수집된다.
+- young generation에 살아남은 객체들 중 일부는 각각의 minor collection들이 진행되는 동안 tenured generaion으로 옮겨진게 된다.
+    - 결국 tenured generation도 가득 차게 될테고 GC의 대상이 되어 힙 전체를 수집하는 major collection이 발생하게 된다.  
+    
+    
+- ![gcmemorydiff](../images/gcmemory.PNG)
+- Perm 영역은 보통 Class의 Meta 정보나 Method의 Meta 정보, Static 변수와 상수 정보들이 저장되는 공간으로 흔히 메타데이터 저장 영역이라고도 한다.
+- 이 영역은 Java 8 부터는 Native 영역으로 이동하여 Metaspace 영역으로 변경되었다.(다만, 기존 Perm 영역에 존재하던 Static Object는 Heap 영역으로 옮겨져서 GC의 대상이 최대한 될 수 있도록 하였다)
 
 
 - 자바 SE는 현재 실행중인 프로세스를 기반으로 가장 적절하다 판단되는 GC를 선택하지만 이것이 가장 최적의 GC가 아닐수 있다.

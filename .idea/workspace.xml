@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/gc_roots.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/8462f4bfba5f173585f6f8cd2dce12ac.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/gcmemory.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/jsgct_dt_001_armgnt_gn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/jvm_momory_model.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/Java_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Java/Java_interview.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spring/Spring_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/Spring_interview.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +86,7 @@
       <workItem from="1587446144429" duration="1127000" />
       <workItem from="1587559101847" duration="65000" />
       <workItem from="1591673987091" duration="1562000" />
-      <workItem from="1591770930176" duration="6948000" />
+      <workItem from="1591770930176" duration="10202000" />
     </task>
     <servers />
   </component>
