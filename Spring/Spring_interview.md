@@ -94,7 +94,7 @@ public void setId(int id) {
 </bean>
 ```
 ```
-//물론 생성자 주입과 마찬가지고 전체를 주입할 수도 있다.
+//물론 생성자 주입과 마찬가지로 전체를 주입할 수도 있다.
 <bean id="person" class="com.kb.di.Person">
         <property name="id" value="1"></property>
         <property name="name" value="Raj"></property>

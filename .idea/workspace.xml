@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/images/gc_roots.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/Java_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Java/Java_interview.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/Spring_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/Spring_interview.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +29,16 @@
     </option>
   </component>
   <component name="ProjectId" id="1ZVqeGAsHowK1ncWjCmXBI5KKXf" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -75,11 +82,17 @@
       <workItem from="1587391355522" duration="636000" />
       <workItem from="1587394188957" duration="1570000" />
       <workItem from="1587446144429" duration="1127000" />
+      <workItem from="1587559101847" duration="65000" />
+      <workItem from="1591673987091" duration="1562000" />
+      <workItem from="1591770930176" duration="6948000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="652" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1587559103959">

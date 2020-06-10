@@ -93,6 +93,32 @@ class Robot{
 - [리플렉션(getDeclaredField()/ set())을 사용해 필드 불러오고 설정하기](http://www.avajava.com/tutorials/lessons/how-do-i-get-and-set-a-declared-field-using-reflection.html)
 - [리플렉션(getDeclaredConstructor()/getConstructor())을 사용해 생성자로 객체 생성하기](http://www.avajava.com/tutorials/lessons/how-do-i-create-an-object-via-its-multiparameter-constructor-using-reflection.html)
     
+#### Garbage Collection 가비지 콜렉션 Java 8
+- 가비지/ Garbage?
+    - 실행중인 프로그램의 어떤 포인터로도 접근할 수 없는 객체를 Garbage로 간주합니다.
+    - [An object is considered garbage when it can no longer be reached from any pointer in the running program.](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html) 
+- 가장 단순한 GC알고리즘은 접근이 가능한 모든 객체를 Garbage인지 확인하는 방법이다.
+    - 이 방법은 규모가 큰 프로그램에서 심각한 문제가 생길 수 있다.
+- 대부분의 객체는 생성되자마자 garbage가 되어버리고 이를 'weak generational hypothesis'라고 한다.
 
 
+
+
+- 자바 SE는 현재 실행중인 프로세스를 기반으로 가장 적절하다 판단되는 GC를 선택하지만 이것이 가장 최적의 GC가 아닐수 있다.
+    - 만약 메모리 관리를 정말 빡빡하게 하고자 한다면 개발자가 직접 가장 적절하다 생각되는 GC를 선택해야한다.
+    - 다만 대용량의 데이터를 사용하거나 수많은 쓰레드의 사용 혹은 높은 비율의 트랜잭션이 발생하는 어플리케이션의 경우가 아니라면 GC를 고려하지 않아도 되는 경우가 많다.
+- GC는 메모리 관리 도구이며 다음과 같은 절차를 통해 자동으로 메모리를 관리한다.
+    - 객체들을 young generation으로 할당하고 오래된 객체들은 old generation으로 옮긴다.
+    - Concurrent (parallel) marking phase (동시 마킹 단계)를 통해 old generation에서 여전히 사용중인 객체를 찾는다.
+        - Concurrent란 여러 root에서 동시에 진행한다는 의미. 여러개의 스레드를 사용한다.
+        - ![root](../images/gc_roots.jpg)
+        - 4가지 GC roots
+            - local variables
+            - active threads
+            - static variables
+            - JNI references
+            - 출처: [Garbage Collection in Java](https://www.w3resource.com/java-tutorial/garbage-collection-in-java.php)
+    - Parallel copying을 통하여 라이브 오브젝트를 압축해 사용 가능한 메모리 복구
+    
+    
 
