@@ -109,4 +109,9 @@ public void setId(int id) {
 </bean>
 ```
 
+###쉐어 잇 인터뷰 질문
 - 스프링 어노테이션
+- Model View Controller 각 역할
+- 스프링 빈/ 빈 스코프
+- Jpa/ N+1문제
+- 디스패처 서블릿

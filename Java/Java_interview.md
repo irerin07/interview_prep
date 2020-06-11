@@ -133,5 +133,5 @@ class Robot{
             - 출처: [Garbage Collection in Java](https://www.w3resource.com/java-tutorial/garbage-collection-in-java.php)
     - Parallel copying을 통하여 라이브 오브젝트를 압축해 사용 가능한 메모리 복구
     
-    
-
+###쉐어 잇 인터뷰 질문
+#### equals, hashcode
