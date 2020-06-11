@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/etc/Etc.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/Database_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Database_interview.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/Java_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Java/Java_interview.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring/Spring_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/Spring_interview.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +83,7 @@
       <workItem from="1587559101847" duration="65000" />
       <workItem from="1591673987091" duration="1562000" />
       <workItem from="1591770930176" duration="10835000" />
-      <workItem from="1591881639852" duration="444000" />
+      <workItem from="1591881639852" duration="1857000" />
     </task>
     <servers />
   </component>
