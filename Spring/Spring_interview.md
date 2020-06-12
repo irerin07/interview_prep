@@ -112,12 +112,23 @@ public void setId(int id) {
 ###쉐어 잇 인터뷰 질문
 - 스프링 어노테이션
 #### Model View Controller 각 역할
-- Model은 어플리케이션이 “무엇”을 할 것인지를 정의 한다. 내부 비지니스 로직을 처리하기 위한 역할을 함.
-  - 처리되는 알고리즘, DB, 데이터 등등.
-- Controller는 모델이 “어떻게” 처리할 지를 알려주는 역할을 한다.
-- View는 화면에 무엇인가를 보여주기 위한 역할을 한다. 컨트롤러 하위에 종속되어, 모델이나 컨트롤러가 보여주려고 하는 모든 필요한 것들을 보여준다. 그리고 사용자의 입력을 받아서 모델의 데이터를 업데이트 한다.
-- Controller는 Model과 View가 각각 무엇을 해야 할 지를 알고 있고, 통제한다. 비지니스 로직을 처리하는 Model과 완전히 UI에 의존적인 View가 서로 직접 이야기 할 수 없게 한다.
-  
+- 프레젠테이션 계층의 구성요소 정보(data)를 담은 Model (Object 혹은 자바 POJO). 
+- 모델과 뷰의 사이에서 데이터의 흐름을 제어하고 비지니스 로직을 담고있는 Controller. 유저 요청을 처리하고 적절한 Model을 생성하여 View에 전달한다.
+- 모델이 가지고 있는 데이터의 화면 출력 로직을 담고있는 View.
 #### 스프링 빈/ 빈 스코프
 #### Jpa/ N+1문제
 #### 디스패처 서블릿
+- Servlet Container에서 HTTP프로토콜을 통해 들어오는 모든 요청을 프레젠테이션 계층의 제일앞에 둬서 중앙집중식으로 처리해주는 프론트 컨트롤러(Front Controller)
+    - 들어오는 HttpRequests들을 적절한 Handler와 Controller로 안내하는 역할
+- ![RequestLifeCycle](../images/RequestLifecycle.png)
+    1. DispatcherServlet이 요청을 받는다.
+    2. DispatcherServlet이 HandlerMapping에게 적절한 Controller를 선택하는 작업을 수행시킨다. HandlerMapping은 요청URL에 매핑되어있는 Controller를 선택하고 (selected Handler)와 Controller를 DispatcherServlet에 반환한다.
+    3. DispatcherServlet이 HandlerAdapter에게 반환된 Controller에 있는 비지니스 로직을 실행하도록 한다.
+    4. HandlerAdapter가 Controller에 있는 비지니스 로직 프로세스를 호출한다.
+    5. Controller가 요청된 비지니스 로직을 수행하고 그 결과를 Model에 담은 뒤 view이름과 함께 HandlerAdapter에 반환한다.
+    6. DispatcherServlet은 반환된 view이름에 맞는 View를 찾는 작업을 ViewResolver에 보내고 ViewResolver는 그에 해당하는 View를 반환한다.
+    7. DispatcherServlet은 반환된 View에게 렌더링 프로세스를 실행하도록 한다.
+    8. View는 Model 데이터를 렌더링하고 응답을 반환한다.
+    - [출처](https://terasolunaorg.github.io/guideline/1.0.1.RELEASE/en/Overview/SpringMVCOverview.html)
+    
+- ![RequestLifeCycle2](../images/SpringMVC.png)
