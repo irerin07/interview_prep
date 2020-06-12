@@ -109,8 +109,22 @@ public void setId(int id) {
 </bean>
 ```
 
+#### Controller and RestController
+
 ###쉐어 잇 인터뷰 질문
-- 스프링 어노테이션
+#### 스프링 어노테이션
+- @Repository
+    - 데이터 엑세스 계층의 DAO 또는 리포지토리 클래스에 사용한다.
+    - DataAccessException 자동변환과 같은 AOP의 적용 대상을 선정하기 위해서도 사용된다.
+    - @Component를 메타 애노테이션으로 가지고 있다.
+- @Service
+    - 서비스 계층의 클래스에 사용된다.
+    - @Component를 메타 애노테이션으로 가지고 있다.
+- Controller
+    - 프레젠테이션 계층의 MVC컨트롤러에 사용된다. 스프링 웹 서블릿에 의해 웹 요청을 처리하는 컨트롤러 빈으로 선정된다.
+    - @Component를 메타 애노테이션으로 가지고 있다.
+    
+
 #### Model View Controller 각 역할
 - 프레젠테이션 계층의 구성요소 정보(data)를 담은 Model (Object 혹은 자바 POJO). 
 - 모델과 뷰의 사이에서 데이터의 흐름을 제어하고 비지니스 로직을 담고있는 Controller. 유저 요청을 처리하고 적절한 Model을 생성하여 View에 전달한다.
