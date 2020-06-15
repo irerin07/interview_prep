@@ -180,6 +180,74 @@ boolean balanced = income.equals(expenses);
     - consistent: equals() 메소드 구현에 사용되는 오브젝트 특성이 수정되지 않는 한 x.equals(y)를 여러 번 호출하더라도 항상 동일한 결과가 리턴되어야합니다.
     - 객체 클래스 equals() 메소드 구현은 두 레퍼런스가 동일한 객체를 가리키는 경우에만 true를 반환합니다.
     
+- 상속으로 인한 symmetric 위반
+    - ```
+      class Voucher extends Money {
+       
+          private String store;
+       
+          @Override
+          public boolean equals(Object o) {
+              if (o == this)
+                  return true;
+              if (!(o instanceof Voucher))
+                  return false;
+              Voucher other = (Voucher)o;
+              boolean currencyCodeEquals = (this.currencyCode == null && other.currencyCode == null)
+                || (this.currencyCode != null && this.currencyCode.equals(other.currencyCode));
+              boolean storeEquals = (this.store == null && other.store == null)
+                || (this.store != null && this.store.equals(other.store));
+              return this.amount == other.amount && currencyCodeEquals && storeEquals;
+          }
+       
+          // other methods
+      }
+      ```
+      위의 코드는 Money를 상속받는 Voucher클래스이다.
+      단순히 보기에는 아무 문제가 없어보인다. 실제로 Money와 Money를 비교하고, Voucher와 Voucher를 비교하면 아무 문제가 없다
+      하지만 Money와 Voucher를 비교하면 어떨까?
+      ```
+      Money cash = new Money(42, "USD");
+      WrongVoucher voucher = new WrongVoucher(42, "USD", "Amazon");
+       
+      voucher.equals(cash) => false // As expected.
+      cash.equals(voucher) => true // That's wrong.
+      ```
+      보이는대로 symmetric(두 개의 객체 x와 y에 대해 x.equals(y)가 true를 반환한다면 y.equals(x)역시 true를 반환해야합니다.)을 위반하고 있다.
+      
+      그럼 어떻게 해야 좋을까? 이 문제를 고치는 방법으로 다음과 같이 코드를 작성할 수 있다.
+      
+    - ```
+      class Voucher {
+       
+          private Money value;
+          private String store;
+       
+          Voucher(int amount, String currencyCode, String store) {
+              this.value = new Money(amount, currencyCode);
+              this.store = store;
+          }
+       
+          @Override
+          public boolean equals(Object o) {
+              if (o == this)
+                  return true;
+              if (!(o instanceof Voucher))
+                  return false;
+              Voucher other = (Voucher) o;
+              boolean valueEquals = (this.value == null && other.value == null)
+                || (this.value != null && this.value.equals(other.value));
+              boolean storeEquals = (this.store == null && other.store == null)
+                || (this.store != null && this.store.equals(other.store));
+              return valueEquals && storeEquals;
+          }
+       
+          // other methods
+      }
+      ```
+      위의 코드는 Money 클래스를 상속받는 대신 Moeny 클래스의 속성을 사용해서 Voucher클래스를 만든것이다.
+      이제는 symmetric을 위배하지 않고 잘 작동할것이다.
+      
 - hashCode()
     - 두 Object가 같은 객체인지 비교한다.
     
