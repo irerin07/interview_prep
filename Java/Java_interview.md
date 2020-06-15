@@ -172,8 +172,13 @@ boolean balanced = income.equals(expenses);
           return this.amount == other.amount && currencyCodeEquals;
       }
       ```
-    
-    
+    - 위와 같이 equals () 메소드를 @Override하면 객체의 정체성만 고려하는것이 아니라 두 가지 관련 속성의 값도 고려하도록 할 수 있다.
+- equals() Contract
+    - reflexive: 모든 객체 x에 대해 x.equals(x)는 true를 반환해야합니다.
+    - symmetric: 두 개의 객체 x와 y에 대해 x.equals(y)가 true를 반환한다면 y.equals(x)역시 true를 반환해야합니다.
+    - transitive: 여러 객체 x, y 및 z의 경우 x.equals(y)가 true를 반환하고 y.equals(z)가 true를 반환하면 x.equals(z)는 true를 반환해야합니다.
+    - consistent: equals() 메소드 구현에 사용되는 오브젝트 특성이 수정되지 않는 한 x.equals(y)를 여러 번 호출하더라도 항상 동일한 결과가 리턴되어야합니다.
+    - 객체 클래스 equals() 메소드 구현은 두 레퍼런스가 동일한 객체를 가리키는 경우에만 true를 반환합니다.
     
 - hashCode()
     - 두 Object가 같은 객체인지 비교한다.
