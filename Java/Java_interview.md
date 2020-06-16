@@ -250,4 +250,59 @@ boolean balanced = income.equals(expenses);
       
 - hashCode()
     - 두 Object가 같은 객체인지 비교한다.
+    - 해싱 알고리즘을 사용하여 정수값을 반환한다.
+    - equals() 메서드를 통해 같은 객체임이 확인 된 두 객체는 반드시 똑같은 hash code를 반환해야 한다.
+    - hashCode() contract
+        - 자바 어플리케이션이 동작할때, 동일한 객체가 호출 될 때마다 hashCode()는 해당 코드에 어떤 변경이 있지 않은 이상 항상 동일한 값을 일관되게 반환해야합니다. 이 값은 다른 자바 어플리케이션에서 실행한 값과 반드시 동일할 필요는 없습니다.
+        - euqals()메소드를 통해 두 객체가 같은 객체임이 확인된 경우 hashCode()역시 동일한 값을 생성해야 합니다.
+        - euquals()를 통해 다른 객체임이 확인되었지만 hashCode()에서 반드시 서로 다른 정수값을 반환할 필요는 없습니다. 하지만 서로 다른 객체에 대해 고유한 정수값을 생성하는 것이 해시테이블의 성능향상에 도움이 됩니다.
+    - 단순하고 실용적이라 할 수 없는 hashCode() 구현체
+    - ```
+      public class User {
+       
+          private long id;
+          private String name;
+          private String email;
+       
+          // standard getters/setters/constructors
+               
+          @Override
+          public int hashCode() {
+              return 1;
+          }
+               
+          @Override
+          public boolean equals(Object o) {
+              if (this == o) return true;
+              if (o == null) return false;
+              if (this.getClass() != o.getClass()) return false;
+              User user = (User) o;
+              return id == user.id 
+                && (name.equals(user.name) 
+                && email.equals(user.email));
+          }
+           
+          // getters and setters here
+      }
+      ```
+    - 위의 코드는 모든 객체를 같은 bucket에 저장하기 때문에 hash Table의 활용도를 0에 가깝게 낮춰버린다.
     
+    - 다음은 intellij에서 제공하는 hashCode()이다
+    - ```
+      @Override
+      public int hashCode() {
+          int result = (int) (id ^ (id >>> 32));
+          result = 31 * result + name.hashCode();
+          result = 31 * result + email.hashCode();
+          return result;
+      }
+      ```
+    - 더 자세한 내용은 이펙티브 자바에서 확인할 수 있다.
+    - https://es.slideshare.net/MukkamalaKamal/joshua-bloch-effect-java-chapter-3
+- 해시 충돌
+    - 아무리 효율적인 해싱 알고리즘을 사용한다 하더라도 동일하지 않은 두 객체에 대해 같은 해시코드를 가질수도 있다.
+        - 그렇기에 두 객체는 해시 테이블 키가 다르더라도 동일한 해시 코드로 인해 같은 bucket을 가리킬것이다.
+    - 두 개 이상의 객체가 동일한 버킷을 가리키는 경우 linked list에 저장이 된다.
+        - 이런 경우 해시 테이블은 linked list의 배열이 되며 동일한 해시를 가진 각 객체는 배열의 버킷 인덱스번째(array[bucket_index]) linked list에 추가된다.
+    - 즉, hashCode()구현은 굉장히 신중하고 효율적으로 이루어져야 한다.
+    - Java 8은 HashMap 구현에 [흥미로운 개선 방법](https://openjdk.java.net/jeps/180)을 내놓았는데, 버킷 크기가 특정 임계 값을 초과하면 연결된 목록이 트리 맵으로 바뀐다. 이를 통해 비관적 O(n) 대신 O(logn)의 시간복잡도(검색)를 달성 할 수 있습니다.
