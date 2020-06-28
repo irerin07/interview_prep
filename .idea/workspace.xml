@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/Java_interview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Java/Java_interview.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +39,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/Downloads/currencyexchange-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -88,7 +87,9 @@
       <workItem from="1592049798322" duration="3766000" />
       <workItem from="1592148438084" duration="12000" />
       <workItem from="1592226161022" duration="3195000" />
-      <workItem from="1592289287702" duration="4094000" />
+      <workItem from="1592289287702" duration="6705000" />
+      <workItem from="1592399663530" duration="1659000" />
+      <workItem from="1592472933782" duration="267000" />
     </task>
     <servers />
   </component>
@@ -99,10 +100,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="652" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1592289335441">
+    <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1592304794286">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="652" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1592289335441" />
+    <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1592304794286" />
+    <state x="652" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1592473192224">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="652" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1592473192224" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1585721773482">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
