@@ -30,6 +30,8 @@
     * 스프링은 "IoC와 DI를 지원하는 하나의 거대한 프레임 워크"이며 여러 컴포넌트들을 가진다.
     * 그 컴포넌트중 하나가 바로 스프링 MVC
         * 스프링 MVC는 "Model View Controller 디자인 패턴"을 통해 웹 응용 프로그램을 디자인 할 때 사용
+        * MVC?
+            - 
     * 스프링 부트는 Spring 개발을 보다 빠르고 광범위하게 접근 가능하게 만드는 스프링 프레임 워크의 확장도구 같은 것.
         * 스프링 부트의 핵심은 pom.xml(Maven) 혹은 build.gradle(Gradle) 파일 내용에 따라 클래스 패스, 어노테이션, 기타 자바구성클래스를 보고 자동구성하는것
         * 스프링을 쉽게 사용할 수 있도록 필요한 설정을 대부분 미리 세팅 해놓았다는 뜻
@@ -149,7 +151,8 @@ public void setId(int id) {
 #### 스프링 빈/ 빈 스코프
 #### Jpa/ N+1문제
 #### 디스패처 서블릿
-- Servlet Container에서 HTTP프로토콜을 통해 들어오는 모든 요청을 프레젠테이션 계층의 제일앞에 둬서 중앙집중식으로 처리해주는 프론트 컨트롤러(Front Controller)
+- 서블릿 중 하나이며 들어온 요청을 Dispatch하는 역할을 하기 때문에 "Dispatcher Servlet" 이라는 이름이 붙었다.
+- Servlet Container에서 HTTP프로토콜을 통해 들어오는 모든 요청을 프레젠테이션 계층의 제일앞에 둬서 중앙집중식으로 처리해주는 서블릿 (프론트 컨트롤러(Front Controller))
     - 들어오는 HttpRequests들을 적절한 Handler와 Controller로 안내하는 역할
 - ![RequestLifeCycle](../images/RequestLifecycle.png)
     1. DispatcherServlet이 요청을 받는다.
