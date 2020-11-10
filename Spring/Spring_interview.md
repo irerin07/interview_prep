@@ -21,6 +21,38 @@
     * 서블릿, 프레임워크가 IoC의 대표적인 예
 
 - 에플리케이션 컨텍스트
+    - 스프링에서 빈의 생성과 관계설정 같은 제어를 담당하는 IoC 오브젝트인 Bean Factory를 좀 더 확장한 일종의 Bean Factory.
+    - 애플리케이션 전반에 걸쳐 모든 구성요소의 제어 작업을 담당
+    - 별도의 정보를 참고해서 Bean의 생성, 관계설정 등의 제어 작업을 총괄
+        - 애플리케이션 컨텍스트가 어떤 오브젝트를 생성하고 어디에 연결할 것인가 등에 관한 정보를 담고 있지 않다.
+        - 대신 설정정보를 담고 있는 무엇인가를 가져와 이를 활용하는 범용적인 IoC엔진 같은것
+            - 설정정보에 해당하는 클래스에 @Configuration이라는 어노테이션을 사용해 Bean Factory를 위한 오브젝트 설정을 담당하는 클래스라고 알린다.
+                - 즉 애플리케이션 컨텍스트 혹은 Bean Factory가 사용할 설정정보라는 표시이다.
+            - 설정정보 내부에 타입 오브젝트를 생성하고 초기화해 돌려주는 메서드에는 @Bean 어노테이션을 사용해 오브젝트 생성을 담당하는 IoC용 메서드라는 표시를 한다.
+    - 애플리케이션 컨텍스트는 ApplicationContext타입의 오브젝트
+    - @Configuration이 붙은 자바 코드를 설정정보로 사용하려면 AnnotationConfigApplicationContext를 이용한다.
+```
+public class UserDaoTest
+    public static void main(String[] args) throws ClassNotFoundException,
+            SQLException {
+        ApplicationContext context = 
+            new AnnotaionConfigApplicationContext(DaoFactory.class);
+        UserDao ud = context.getBean("userDao", UserDao.class);
+    }
+}
+```
+- 
+    - getBean() 메서드는 ApplicationContext가 관리하는 오브젝트를 요청하는 메서드.
+        - getBean()의 파라미터는 ApplicationContext에 등록된 빈의 이름
+        - @Bean 어노테이션을 사용한 메서드의 이름이 빈의 이름이 된다.
+            - 즉 userDao라는 이름의 빈을 가져온다는 것은 DaoFactory의 userDao()메서드를 호출해서 그 결과를 가져온다고 생각하면 된다.
+        - 메서드의 이름을 빈의 이름으로 하는 이유는 빈 오브젝트르 생성하는 방식이나 구성을 다르게 가져가는 메서드를 추가할 수 있기 때문이다.
+        - getBean()메서드는 기본적으로 Object타입을 반환하기에 매번 캐스팅을 해줘야 하지만 Java 5 이상부터 지원하는 제네릭 메소드 방식을 사용해 getBean의 두번째 파라미터로 리턴 타입을 지정해주면 캐스팅을 사용하지 않아도 된다.
+        
+- 애플리케이션 컨텍스트의 작동방식
+
+
+    
 - AOP란?
     * Aspect Oriented Programming - 관점 지향 프로그래밍
 - Dependency Injection
