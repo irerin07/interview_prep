@@ -107,6 +107,47 @@ public class UserDaoTest
   1. 클래스 모델이나 코드에는 런타임 시점의 의존관계가 드러나지 않는다. 인터페이스에만 의존하고 있어야 한다.
   2. 런타임 시점의 의존관계는 **컨테이너나 팩토리 같은 제3자(어플리케이션 컨택스트, 빈 팩토리, IoC컨테이너)가 결정**한다.
   3. 의존관계는 사용할 오브젝트에 대한 레퍼런스를 외부에서 주입(제공)해줌으로써 만들어진다.
+- 주입이라는 것은 외부에서 내부로 무엇인가 넘겨줘야 하는 것.
+- 자바에서 오브젝트에 무엇인가를 넘겨준다는 개념은 메소드를 실행하면서 파라미터로 오브젝트의 **레퍼런스**를 전달해주는 방법뿐이다.
+- 가장 쉽게 사용할 수 있는 파라미터 전달이 가능한 메소드는 생성자이다.
+
+
+- DI컨테이너는 자신이 결정한 의존관례를 맺어줄 클래스의 오브젝트를 만들고 이 생성자의 파라미터로 오브젝트의 레퍼런스를 전달해준다.
+  - 생성자 파라미터를 통해 전달받은 런타임 의존관계를 갖는 오브젝트는 인스턴스 변수에 저장해둔다.
+```
+public class UserDao {
+    private ConnectionMaker connectionMaker;
+
+    public UserDao(ConnectionMaker connectoinMaker) {
+        this.connectionMaker = connectionMaker;
+    }
+    ...
+}
+```
+
+- 위와 같이 의존관계가 만들어지면 UserDao오브젝트는 이제 생성자를 통해 주입받은 오브젝트를 언제든지 사용하면 된다.
+- DI는 자신이 사용할 오브젝트에 대한 선택과 생성 제어권을 외부로 넘기고 자신은 수동적으로 주입받은 오브젝트를 사용한다.
+
+
+##### 의존관계 검색(dependency lookup)
+- 자신이 필요로 하는 의존 오브젝트를 능동적으로 찾는다.
+  - 런타임 시 의존관계를 맺을 오브젝트를 결정하는 것과 오브젝트의 생성은 외부 컨테이너에게  IoC로 맡기지만 이를 가져올 때는 메소드나 생성자를 통한 주인 대신 스스로 컨테이너에게 요청한다.
+```
+//DaoFactory를 사용하는 생성자
+public UserDao() {
+    DaoFactory daoFactory = new DaoFactory();
+    this.connectionMaker = daoFactory.connectionMaker();
+}
+```
+- 위와 같이 코드를 작성해도 UserDao는 여전히 자신이 어떤 ConnectionMaker 오브젝트를 사용할지 미리 알지 못하며 ConnectionMaker 인터페이스에만 의존한다.
+- 스프링의 IoC컨테이너인 애플리케이션 컨텍스트는 getBean()이라는 메소드를 제공한다.
+  - 의존관계 검색에 사용되는 메소드
+```
+public UserDao(){
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+    this.connectionMaker = context.getBean("connectionMaker", ConnectionMaker.class);
+}
+```
 
 
     
