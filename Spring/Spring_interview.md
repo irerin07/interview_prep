@@ -178,6 +178,8 @@ public UserDao(){
         * 생성자 주입 방식으로는 Partial Dependency를 구현할 수 없다.
             - 생성자 주입 방식으로는 생성자에 있는 모든 arguments들을 넘겨주어야 하기 때문.
             - 하지만 Setter 방식은 필요한 혹은 원하는 의존성들만 주입하는것이 가능하다.
+            
+            
 ```
 //아래와 같은 코드가 있다고 가정해보자
 public class Person {
