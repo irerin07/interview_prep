@@ -137,6 +137,7 @@ class Robot{
 #### equals, hashcode
 - Java.lang.object에는 굉장히 중요한 두 메소드가 정의되어 있다. public boolean equals(Object obj)와 public int hashCode().
 - equals()는 두 Object가 같은 내용인지 비교한다.
+
 ```
 class Money {
     int amount;
@@ -147,6 +148,7 @@ Money income = new Money(55, "USD");
 Money expenses = new Money(55, "USD");
 boolean balanced = income.equals(expenses);
 ```
+
 - 위의 코드는 true를 반환할 것 같지만 실제로는 false를 반환한다.
     - 그 이유는 실제로 구현되어 있는 equals의 코드를 보면 알 수 있다.
     - ```
@@ -157,6 +159,7 @@ boolean balanced = income.equals(expenses);
     - 단순히 ==를 사용해서 비교하고 있다.
     - == 연산자는 두개의 비교 대상들이 원시타입(primitive type)인 경우에는 값이 같은지 비교를 하지만 그 외 객체, reference type인 경우엔 주소가 같은지 비교한다.
     - 그러니 false가 나올수 밖에...
+    
 - 그럼 어떤 방식으로 비교를 해야 할까?
     - equals()를 @Override하면 문제를 해결할 수 있다.
     - ```
