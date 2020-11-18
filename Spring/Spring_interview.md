@@ -140,17 +140,32 @@ public UserDao() {
 }
 ```
 - 위와 같이 코드를 작성해도 UserDao는 여전히 자신이 어떤 ConnectionMaker 오브젝트를 사용할지 미리 알지 못하며 ConnectionMaker 인터페이스에만 의존한다.
+- 런타임 시에 DaoFactory가 만들어서 돌려주는 오브젝트와 다이나믹한 런타임 의존관계를 맺지만, 적용 방법은 스스로 IoC컨테이너인 DaoFactory에게 요청하는 것.
 - 스프링의 IoC컨테이너인 애플리케이션 컨텍스트는 getBean()이라는 메소드를 제공한다.
   - 의존관계 검색에 사용되는 메소드
 ```
+//의존관계 검색을 이용하는 UserDao 생성자
 public UserDao(){
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
     this.connectionMaker = context.getBean("connectionMaker", ConnectionMaker.class);
 }
 ```
-
-
+- 의존관계 검색 방법은 코드 안에 오브젝트 팩토리 클래스나 스프링 API가 나타난다.
+  - 애플리케이션 컴포넌트가 컨테이너와 같이 성격이 다른 오브젝트에 의존하게 된다 -> Bad
+  - 사용자에 대한 DB 정보를 가져오기만 집중해야하는 UserDao에서 스프링이나 오브젝트 팩토리를 만들고 API를 이용하는것은 어색하다
+  - 그렇기에 대부분의 경우 의존관계 주입이 더 바람직하다.
+- 서버는 main()과 같은 기동 메소드는 없지만,  사용자의 요청을 받을 때마다 main()메소드와 비슷한 역할을 하는 서블릿에서 스프링 컨테이너에 담긴 오브젝트를 사용하려면 한 번은 의존관계 검색 방식을 사용해 오브젝트를 가져와야 한다.
+  - 다만 이런 서블릿은 스프링이 미리 만들어서 제공하기 때문에 직접 구현할 필요는 없다.
+- 의존관계 검색 방식에서는 검색하는 오브젝트는 자신이 스프링의 빈일 필요가 없다.
+  - UserDao에 스프링의 getBean()을 사용한다면 UserDao는 굳이 스프링이 만들고 관리하는 빈일 필요가 없다.
+    - 다만 ConnectionMaker는 스프링의 빈이어야 한다.
+- 의존관계 주입 방식에서는 UserDao와 ConnectionMaker 사이에 DI가 적용되러면 UserDao역시 컨테이너가 만드는 빈 오브젝트여야 한다.
+  - 컨테이너가 UserDao에 ConnectionMaker 오브젝트를 주입하기 위해선 UserDao에 대한 생성과 초기화 권한을 갖고 있어야 한다.
+  - 그러기 위해선 UserDao는 IoC방식으로 컨테이너에서 생성되는 오브젝트, 빈이어야 한다.
+  - **DI를 원하는 오브젝트는 먼저 자기 자신이 컨테이너가 관리하는 빈이 되어야 한다.**
     
+- 의존관계 주입의 응용
+  - 
 - AOP란?
     * Aspect Oriented Programming - 관점 지향 프로그래밍
 - Dependency Injection
