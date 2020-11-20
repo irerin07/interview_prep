@@ -182,3 +182,38 @@ public class UserDaoDeleteAll extends UserDao {
   - 변하지 않는 코드를 가진 UserDao의 JDBC try/catch/finally 블록과 변하는 PreparedStatement를 담고 있는 서브클래스들이 이미 클래스 레벨에서 컴파일 시점에 이미 그 관계가 결정되어 있다.
   - 관계에 대한 유연성이 떨어진다.
 - 상속을 통애 확장을 하는 템플릿 메소드의 단점이 고스란히 드러난다.
+
+- 전략 패턴의 적용
+- 오브젝트를 아예 둘로 분리하고 클래스 레벨에서는 인터페이스를 통해서만 의존하도록 만드는 전략 패턴.
+  - 확장에 해당하는 부분인 변하는 부분을 별도의 클래스로 만들어 추상화된 인터페이스를 통해 위임하는 방식.
+![sp](../images/strategypattern.PNG)
+- deleteAll() 메소드에서 변하지 않는 부분이라고 명시한 것이 contextMethod()가 된다.
+- 컨텍스트란 변하지 않는 맥락이다
+  - deleteAll()의 컨텍스트
+  1. DB커넥션 가져오기
+  2. PreparedStatement를 만들어줄 외부 기능 호출
+  3. 전달받은 PreparedStatement 실행
+  4. 예외 발생시 이를 다시 메소드 밖으로 던지기
+  5. 모든 경우에 만들어진 PreparedStatement와 Connection을 적절히 닫기
+- PreparedStatement를 만들어주는 외부 기능이 바로 전략 패턴에서의 전략에 해당한다.
+- 전략 패턴의 구조를 따라 이 기능을 인터페이스로 만들어두고 인터페이스의 메소드를 통해 PreparedStatement 생성 전략을 호출해주면 된다.
+- PreparedStatement를 생성하는 전략 호출시, 해당 컨텍스트 내에서 만들어둔 DB커넥션을 전달해야 한다.
+```
+package springbook.user.dao;
+...
+public interface StatementStrategy {
+    PreparedStatement makePreparedStatement(Connection c) throws SQLExceptoin ;
+}
+```
+- 위의 인터페이스를 상속해 PreparedStatement를 생성하는 클래스를 생성
+
+```
+package springbook.user.dao;
+...
+public class DeleteAllStatement implements StatementStrategy {
+    public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
+        PreparedStatement ps = c.prepareStatement("delete from users");
+        return ps;
+    }
+}
+```
