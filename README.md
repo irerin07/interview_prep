@@ -1,7 +1,6 @@
 # 인터뷰 준비 저장소
 인터넷에서 보거나 실제로 받은 면접 질문들을 모아서 공부하고 답변하는 저장소
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=irerin07&theme=dark&show_icons=true)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=irerin07)
+[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=irerin07&theme=dark)
 ## 면접 질문
 1. [자바](https://github.com/irerin07/interview_prep/blob/master/Java/Java_interview.md)
 2. [스프링](https://github.com/irerin07/interview_prep/blob/master/Spring/Spring_interview.md)
