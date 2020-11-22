@@ -283,3 +283,59 @@ public void deleteAll() throws SQLException {
 }
 ```
 - 비록 클라이언트와 컨텍스트는 클래스를 분리하진 않았지만 의존관계와 책임으로 볼 때 좋은 전략 패턴의 모습을 갖췄다.
+
+##### 3.3 JDBC 전략 패턴 최적화
+- 이제 독립된 JDBC 작업 흐름이 담긴 jdbcContextWithStatementStrategy()는 DAO 메소드들이 공유할 수 있게 됐다.
+- DAO 메소드는 전략 패턴의 클라이언트로서 컨텍스트에 해당하는 jdbcContextWithStatementStrategy() 메소드에 전략(바뀌는 로직)을 제공해주는 방법으로 사용할 수 있다.
+  - 컨텍스트 = PreparedStatement를 실행하는 JDBC의 작업 흐름
+  - 전략 = PreparedStatement를 생성하는 것
+  
+##### 3.3.1 전략 클래스의 추가 정보
+- add() 메소드에 적용하기
+```
+public Vlass AddStatement implements StatementStrategy {
+    public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
+        PreparedStatement ps = c.prepareStatement("insert into user(id, name ,passwd) values (?,?,?)");
+        ps.setString(1, user.getId());
+        ps.setString(2, user.getName());
+        ps.setString(3, user.getPasswd());
+        
+        return ps;
+    }
+}
+```
+- all()에서는 PreparedStatement를 만들 때 user라는 부가적인 정보가 필요하다.
+- 사용자 정보는 클라이언트에 해당하는 add()메소드가 가지고 있다.
+  - 클라이언트가 AddStatement의 전략을 수행하려면 부가정보인 user를 제공해줘야 한다.
+```
+package springbook.user.dao;
+...
+public Vlass AddStatement implements StatementStrategy {
+    User user;
+
+    public class AddStatement(User user){
+        this.user  = user;
+    }
+    
+    public PreparedStatement makePreparedStatement(Connection c) {
+        ...
+        ps.setString(1, user.getId());
+        ps.setString(2, user.getName());
+        ps.setString(3, user.getPasswd());
+        ...
+    }
+}
+```
+- 이제 컴파일 에러는 나지 않는다.
+- 다음은 클라이언트인 UserDao의 add()메소드를 다음과 같이 user 정보를 생성자를 통해 전달해주도록 한다.
+```
+public void add(User user) throws SQLException {
+    StatementStrategy st = new AddStatement(user);
+    jdbcContextWithStatement(st);
+}
+```
+
+- 두가지 개선점
+  - DAO 메소드마다 새로운 StatementStrategy 구현 클래스를 만들어야 한다.
+  - DAO 메소드에서 StatementStrategy에 전달할 User와 같은 부가적인 정보가 있는 경우, 이를 위해 오브젝트를 전달받는 생성자와 이를 저장해둘 인스턴스 변수를 번거롭게 만들어야 한다.
+  
