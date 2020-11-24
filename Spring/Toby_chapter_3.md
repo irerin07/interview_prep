@@ -441,3 +441,73 @@ public void deleteAll() throws SQLException {
 ```
 ##### 3.4 컨텍스트와 DI
 #### 3.4.1 jdbcContext의 분리
+- UserDao의 메소드가 클라이언트이고, 익명 내부 클래스로 만들어지는 것이 개별적인 전략이며, jdbcContextWirhStatementStrategy()메소드는 컨텍스트이다.
+- 컨텍스트 메소드는 UserDao 내의 PreparedStatement를 실행하는 기능을 가진 메소드에서 공유할 수 있다.
+- jdbcContextWithStatementStrategy()를 UserDao 클래스 밖으로 독립시켜 모든 DAO가 사용할 수 있도록 하자.
+
+
+- 클래스 분리
+- 분리해서 만들 클래스의 이름은 JdbcContext
+- jdbcContext에 UserDao에 있던 컨텍스트 메소드를 workWithStatementStrategy()라는 이름으로 옮겨놓는다.
+- 이렇게 하면 DataSource가 필요한 것은 UserDao가 아니라 JdbcCOntext가 돼버린다.
+  - DB커넥션을 필요로 하는 코드가 JdbcContext안에 있기 때문
+  - JdbcCOntext가 DataSource타입의 빈을 DI 받을 수 있게 해야 한다.
+```
+package springbook.user.dao;
+...
+public class JdbcContext{
+    private DataSource datasource;
+
+    public void setDataSource(DataSource dataSource) {
+        this.datasource = dataSource;
+    }
+
+    public void workWithStatementStrategy(StatementStrategy stmt) throws SQLException {
+        Connection c = null;
+        PreparedStatement ps = null;
+        
+        try {
+            c = this.datasource.getConnection();
+
+            ps = stmt.makePreparedStatement(c);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (ps != null ) { try { ps.close(); } catch (SQLException e) {} }
+            if (c != null ) { try { c.close(); } catch (SQLException e) {} }
+        }
+    }
+}
+
+```
+```
+public class UserDao {
+    ...
+    private JdbcContext jdbcContext;
+
+    public void setJdbcContext(JdbcContext jdbcContext) {
+        this.jdbcContext = jdbcContext;
+    }
+
+    public void add(final User user) throws SQLException {
+        this.jdbcContext.workWithStatementStrategy(
+            new StatementStrategy() { ... }
+        );
+    }
+
+    public void deleteAll() throws SQLException {
+        this.jdbcContext.workWithStatementStrategy(
+            new StatementStrategy() { ... }
+        );
+    }
+}
+```
+
+- UserDao는 이제 JdbcContext에 의존한다.
+  - JdbcContext는 인터페이스인 DataSource와는 달리 구체 클래스다.
+    - 스프링의 DI는 인터페이스를 사이에 두고 의존 클래스를 바꿔서 사용하도록 하는게 목적이다.
+    - 하지만 JdbcContext는 그 자체로 독립적인 JDBC 컨텍스트를 제공해주는 서비스 오브젝트로서 의미가 있을 뿐이고 구현 방법이 바뀔 가능성은 없다.
+    - UserDao와 JdbcContext는 인터페이스를 사이에 두지 않고 DI를 적용하는 특별한 구조가 된다.
+![jdbcContext](../images/jdbccontext.PNG)
