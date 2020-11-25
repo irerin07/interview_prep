@@ -511,3 +511,4 @@ public class UserDao {
     - 하지만 JdbcContext는 그 자체로 독립적인 JDBC 컨텍스트를 제공해주는 서비스 오브젝트로서 의미가 있을 뿐이고 구현 방법이 바뀔 가능성은 없다.
     - UserDao와 JdbcContext는 인터페이스를 사이에 두지 않고 DI를 적용하는 특별한 구조가 된다.
 ![jdbcContext](../images/jdbccontext.PNG)
+
