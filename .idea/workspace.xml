@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/jdbcContextBeanObject.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/jdbcContextDI.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring/Toby_chapter_3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/Toby_chapter_3.md" afterDir="false" />
     </list>
@@ -129,7 +129,7 @@
       <workItem from="1606217558172" duration="4516000" />
       <workItem from="1606309705729" duration="642000" />
       <workItem from="1606394531633" duration="62000" />
-      <workItem from="1606530349784" duration="4464000" />
+      <workItem from="1606530349784" duration="8085000" />
     </task>
     <task id="LOCAL-00001" summary="7">
       <created>1606309732206</created>

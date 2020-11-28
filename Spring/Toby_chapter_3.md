@@ -560,7 +560,28 @@ public class UserDao {
     - DI 필요성을 위해 스프링의 빈으로 등록해 UserDao에 DI 되도록 만들기 가능
 
 ###### 코드를 이용하는 수동 DI
-- 
+- JdbcContext를 스프링의 빈으로 등록해 UserDao에 DI 하는 대신 사용할 수 있는 방법 - UserDao 내부에서 직접 DI를 적용
+- 싱글톤으로 만들려는 것은 포기해야 한다.
+  - 대신 DAO마다 하나의 JdbcContext 오브젝트를 가지고 있게 하는 것
+    - 물론 모든 DAO마다 하나씩 만들어줘야 한다.
+- JdbcContext는 스프링 빈으로 등록하지 않읐으므로 다른 누군가가 JdbcContext의 생성과 초기화를 책임져아 한다.
+  - 자신이 사용할 오브젝트를 직접 만들고 초기화 하는 방법을 사용하여 UserDao에게 이 책임을 맡긴다.
+  - 이미 UserDao는 JdbcContext의 정체도 알고 있으니 문제될것이 없다.
+- **JdbcContest는 다른 빈을 인터페이스를 통해 간접적으로 의존중이다.**
+  - 다른 빈을 의존하고 있다면, 의존 오브젝트를 DI를 통해 제공받기 위해 자신도 빈으로 등록되어야 한다.
+  - 그럼 UserDao에서 JdbcCOntext를 직접 생성해 사용하는 경우엔...?
+  - JdbcContext는 DataSource 타입 빈을 다이내믹하게 주입 받아서 사용해야 한다.
+    - 하지만 JdbcContext 자신은 스프링의 빈이 아니기에 DI 컨테이너를 통해 DI 받을 수 없다.
+  - 이런 경우 사용할 수 있는 한가지 방법
+   - **JdbcContext에 대한 제어권을 갖고 생성과 관리를 담당하는 UserDao에게 DI까지 맡기는 방법**
+   - 오브젝트를 생성하고 그 의존 오브젝트를 수정자 메소드로 주입해주는 것이 바로DI의 동작 원리
+- JdbcContext에 주입해줄 의존 오브젝트인 DataSource는 UserDao가 대신 DI 받도록 하면 된다.
+  - UserDao는 직접 DataSource를 사용하진 않지만 대신 DI 받는것
+  - 주입받은 DataSource 빈을 JdbcContext를 만들고 초기화 하는 과정에만 사용하고 버리면 된다.
+![jdbcContextDI](../images/jdbcContextDI.PNG)
+  
+  
+  
 
   
 
