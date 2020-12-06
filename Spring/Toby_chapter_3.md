@@ -584,8 +584,54 @@ public class UserDao {
 - userDao 빈에 DataSource 타입 프로퍼티를 지정해서 dataSource 빈을 주입받도록 한다.
 - UserDao는 JdbcContext 오브젝트를 만들면서 DI 받은 DataSource 오브젝트를 JdbcContext의 수정자 메소드로 주입
 - 만들어진 JdbcContext 오브젝트는 UserDao의 인스턴스 변수에 저장해주고 사용  
+```
+<beans>
+    <bean id="userDao" class="springbook.user.UserDao">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        ...
+    </bean
+</beans>
+```
+- 설정 파일만 보면 UserDao가 DataSource를 의존하고 있는 것 같지만 내부적으로는 JdbcContext를 통해 간접적으로 DataSource를 사용하고 있을 뿐이다.
+  - JdbcContext를 UserDao와 묶어서 userDao 빈이라고 생각하면 빈 레벨에서는 userDao빈이 dataSource 빈에게 의존하고 있다고 할 수도 있다.
 
+```
+public class UserDao {
+    ...
+    private JdbcContext jdbcContext;
+    
+    public void setDataSource(DataSource dataSource) { // 수정자 메소드이면서 JdbcContext에 대한 생성, DI작업을 동시에 수행
+        this.jdbcContext = new JdbcContext(); //JdbcContext 생성(IoC)
+        
+        this.jdbcContext.setDataSource(dataSource); //의존 오브젝트 주입 (DI)
 
+        this.dataSource = dataSource; 아직 JdbcCOntext를 적용하지 않은 메소드를 위해 저장
+```
+- setDataSource() 메소드는 DI 컨테이너가 DataSource 오브젝트를 주입해줄 떄 호출된다.
+
+###### 인터페이스를 사용하지 않고 DAO와 밀접한 관계를 갖는 클래스를 DI에 적용하는 방법 2가지를 알아봤다.
+1. 스프링 빈으로 등록하는 방법
+  - 오브젝트 사이의 실제 의존관계가 설정파일에 명확히 드러난다는 장점
+  - DI의 근본적인 원칙에 부합하지 않는 구체적인 클래스와의 관계가 설정에 노출되는 단점
+2. 코드를 사용하는 수동 DI
+  - 관계를 외부에 드러내지 않는다는 장점
+  - 필요에 따라 내부에서 은밀히 DI를 수행하고 그 전략을 외부에는 감출 수 있다.
+  - 다만 JdbcContext를 여러 오브젝트가 사용하더라도 싱글톤으로 만들 수 없다.
+  - DI 작업을 위한 부가적인 코드가 필요하다는 단점도 있다.
+  
+##### 3.5 템플릿과 콜백
+- 전략 패턴의 컨텍스트를 템플릿, 익명 내부 클래스로 만들어지는 오브젝트를 콜백이라고 부른다.
+- 바뀌지 않는 일정한 패턴을 갖는 직업 흐름이 존재하고 그중 일부분만 자주 바꿔서 사용해야 하는 경우에 적합한 구조.
+###### 3.5.1 템플릿/콜백의 동작원리
+- 템플릿은 고정된 작업 흐름을 가진 코드를 재사용한다는 의미에서 붙인 이름이다.
+- 콜백은 템플릿 안에서 호출되는 것을 목적으로 만들어진 오브젝트를 말한다.
+####### 템플릿/ 콜백의 특징
+- 템플릿/콜백 패턴의 콜백은 단일 메소드 인터페이스인 경우가 많다.
+  - 작업 흐름중에 특정 기능을 위해 한 번 호출되는 경우가 일반적이기 때문.
+- 콜백은 일반적으로 하나의 메소드를 가진 인터페이스를 구현한 익명 내부 클래스로 만들어진다고 보면 된다.
+- 콜백 인터페이스의 메소드에는 텝플릿 작업 흐름 중 만들어지는 컨텍스트 정보를 받는 파라미터가 있다.
 
   
   
