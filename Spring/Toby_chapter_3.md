@@ -583,4 +583,4 @@ public class UserDao {
 - 스프링의 설정파일에 userDao와 dataSource 두 개만 빈으로 정의한다.
 - userDao 빈에 DataSource 타입 프로퍼티를 지정해서 dataSource 빈을 주입받도록 한다.
 - UserDao는 JdbcContext 오브젝트를 만들면서 DI 받은 DataSource 오브젝트를 JdbcContext의 수정자 메소드로 주입
-- 만들어진 JdbcContext 오브젝트는 UserDao의 인스턴스 변수에 저장해주고 사용
+- 만들어진 JdbcContext 오브젝트는 UserDao의 인스턴스 변수에 저장해주고 사용    
