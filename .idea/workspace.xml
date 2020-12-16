@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="" />
+    <list default="true" id="5b5d6327-7efa-48f2-a152-98c25dbff0aa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/Etc.md" beforeDir="false" afterPath="$PROJECT_DIR$/etc/Etc.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,6 +133,9 @@
       <workItem from="1606745060233" duration="39000" />
       <workItem from="1606831333297" duration="9000" />
       <workItem from="1607610192325" duration="655000" />
+      <workItem from="1607784804553" duration="62000" />
+      <workItem from="1607821896416" duration="35000" />
+      <workItem from="1608129332673" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="7">
       <created>1606309732206</created>
@@ -166,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607610240755</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="8">
+      <created>1607784819518</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607784819518</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,13 +189,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="7" />
     <MESSAGE value="Merge branch 'master' of https://github.com/irerin07/interview_prep&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Spring/Toby_chapter_3.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/irerin07/interview_prep&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Spring/Toby_chapter_3.md" />
+    <MESSAGE value="8" />
+    <option name="LAST_COMMIT_MESSAGE" value="8" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="577" y="107" key="CommitChangelistDialog2" timestamp="1607610240156">
+    <state x="577" y="107" key="CommitChangelistDialog2" timestamp="1607784818921">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="577" y="107" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1607610240156" />
+    <state x="577" y="107" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1607784818921" />
     <state x="598" y="300" key="MultipleFileMergeDialog" timestamp="1607522611375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -191,10 +205,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="184" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1605366738621" />
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1607610244995">
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1607784826092">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1607610244995" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1607784826092" />
     <state x="816" y="438" key="git4idea.ui.GitStashDialog" timestamp="1607522642121">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
