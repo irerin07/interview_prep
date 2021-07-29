@@ -87,6 +87,19 @@ public class UserDaoTest
       - 웹의 세션과 비슷한 Session 스코프
       
 - Dependency Injection 의존관계 주입
+```
+Dependency Injection for 5 year olds
+
+When you go and get things out of the refrigerator for yourself, you can cause problems. You might leave the door open, you might get something Mommy or Daddy doesn't want you to have. You might even be looking for something we don't even have or which has expired.
+
+What you should be doing is stating a need, "I need something to drink with lunch," and then we will make sure you have something when you sit down to eat.
+
+어느 꼬마가 냉장고에서 간식과 함께 먹을 음료수를 꺼내고 싶어한다. 하지만 나이 어린 꼬마가 직접 냉장고에서 음료수를 가져온다면 여러가지 문제가 발생 할 수 있다.
+예를들어 문을 열어둔채 잊어버릴수도 있고, 엄마나 아빠가 마시지 말라고 한 음료수를 가져올 수도 있다. 아니면 애초에 없는 음료수를 하루종일 찾아 헤매일수도 있고 상해버린 음료수를 집어올지도 모른다.
+
+이런 문제들이 발생하는것을 막기 위해 꼬마는 자신의 요구사항(간식과 먹을때 마실 음료수가 필요해요)을 우리에게 전달하고 해당 요구사항에 맞춰 우리가 직접 냉장고에서 적당한 음료수를 전달해주는 것이다.
+```
+
   - 스프링이 제공하는 IoC의 방식의 핵심을 짚어주는 이름이다.
   - DI는 오브젝트의 레퍼런스를 전달한다.
     - 외부로부터 오브젝트 레퍼런스를 제공 받고 이를 통해 여타 오브젝트와 다이나믹하게 의족관계가 만들어지는 것
